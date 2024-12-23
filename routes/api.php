@@ -25,7 +25,7 @@ Route::prefix('users')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
 });
 
-Route::prefix('blogs')->group(function () {
-    Route::post('/create', [UserController::class, 'create']);
+Route::middleware('jwt.auth')->prefix('blogs')->group(function () {
+    Route::post('/create', [BlogController::class, 'create']);
 });
 

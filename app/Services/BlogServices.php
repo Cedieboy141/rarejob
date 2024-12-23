@@ -26,14 +26,14 @@ class BlogServices {
 
         try {
             $dataToPass = [
-                'posted_by' => $data['user']->id,
+                'posted_by' => auth()->user()->id,
                 'title' => $data['title'],
                 'description' => $data['description'], 
                 'content' => $data['content']
             ];
 
             $validator = Validator::make($dataToPass, [
-                'posted_by' => 'requireds',
+                'posted_by' => 'required',
                 'title' => 'required|string',
                 'description' => 'required|string', 
                 'content' => 'required'
